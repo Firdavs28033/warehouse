@@ -34,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 # DEBUG = True
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['web-production-e585.up.railway.app']
+ALLOWED_HOSTS = ['web-production-e585.up.railway.app', 'localhost']
 
 
 # Application definition
@@ -174,4 +174,4 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
 }
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://web-production-e585.up.railway.app"]

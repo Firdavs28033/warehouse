@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa8ee7c2-9def-4ead-8b7a-d07c36fa69d0" name="Changes" comment="deployment checklist" />
+    <list default="true" id="aa8ee7c2-9def-4ead-8b7a-d07c36fa69d0" name="Changes" comment="deployment checklist">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omborxona/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/omborxona/settings.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +108,7 @@
       <workItem from="1713198622168" duration="687000" />
       <workItem from="1713263971139" duration="9367000" />
       <workItem from="1713281211975" duration="5135000" />
-      <workItem from="1713326450600" duration="12820000" />
+      <workItem from="1713326450600" duration="14634000" />
     </task>
     <task id="LOCAL-00001" summary="omborxona">
       <option name="closed" value="true" />
