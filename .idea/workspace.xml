@@ -4,29 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa8ee7c2-9def-4ead-8b7a-d07c36fa69d0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/omborxona.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/omborxona/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/omborxona/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/omborxona/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/omborxona/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/omborxona/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/permissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
+    <list default="true" id="aa8ee7c2-9def-4ead-8b7a-d07c36fa69d0" name="Changes" comment="omborxona">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.dist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omborxona/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/omborxona/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,11 +98,35 @@
       <workItem from="1713198622168" duration="687000" />
       <workItem from="1713263971139" duration="9367000" />
       <workItem from="1713281211975" duration="5135000" />
-      <workItem from="1713326450600" duration="10893000" />
+      <workItem from="1713326450600" duration="12148000" />
     </task>
+    <task id="LOCAL-00001" summary="omborxona">
+      <option name="closed" value="true" />
+      <created>1713338211044</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713338211044</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="omborxona" />
+    <option name="LAST_COMMIT_MESSAGE" value="omborxona" />
   </component>
 </project>

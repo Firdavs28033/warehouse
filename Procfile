@@ -1,0 +1,1 @@
+web: gunicorn omborxona.wsgi --log-file -
