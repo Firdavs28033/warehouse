@@ -1,14 +1,17 @@
 openapi: 3.0.3
 info:
-  title: omborxona API
+  title: IIV Akademiyasi moddiy boyliklarini hisobga olish uchun Backend qismi
   version: 1.0.0
-  description: omborxona - Django REST Framework
+  description: IIV Akademiyasi moddiy boyliklarini hisobga olish, nazorat qilish uchun
+    Backend qismi
 paths:
   /api/auth/login/:
     post:
       operationId: auth_login_create
+      description: Foydalanuvchi login qilishi uchun endpoint.
+      summary: User login qilishi uchun endpoint
       tags:
-      - auth
+      - Avtorizatsiyaga oid endpointlar
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -22,20 +25,23 @@ paths:
               $ref: '#/components/schemas/AuthToken'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthToken'
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
           description: ''
   /api/auth/logout/:
     post:
       operationId: auth_logout_create
+      description: Tizimdan chiqish uchun endpoint.
+      summary: Tizimdan chiqish uchun endpoint
       tags:
-      - auth
+      - Avtorizatsiyaga oid endpointlar
       requestBody:
         content:
           application/json:
@@ -49,20 +55,23 @@ paths:
               $ref: '#/components/schemas/User'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
           description: ''
   /api/auth/register/:
     post:
       operationId: auth_register_create
+      description: Registratsiya qilish
+      summary: Foydalanuvchi registratsiya qilishi uchun endpoint
       tags:
-      - auth
+      - Avtorizatsiyaga oid endpointlar
       requestBody:
         content:
           application/json:
@@ -76,7 +85,6 @@ paths:
               $ref: '#/components/schemas/User'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
       - {}
       responses:
@@ -84,26 +92,33 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
           description: ''
   /api/products/:
     get:
-      operationId: get all products
+      operationId: products_list
+      description: Barcha mahsulotlar ro'yxati
+      summary: Barcha mahsulotlar ro'yxati
       tags:
-      - products
+      - Moddiy boyliklarga oid endpointlar
       security:
-      - cookieAuth: []
       - tokenAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
           description: ''
   /api/products/{id}/:
     get:
-      operationId: get product by id
+      operationId: products_list_2
+      description: Id si ko'rsatilgan mahsulot
+      summary: Id si ko'rsatilgan mahsulot
       parameters:
       - in: path
         name: id
@@ -111,20 +126,23 @@ paths:
           type: integer
         required: true
       tags:
-      - products
+      - Moddiy boyliklarga oid endpointlar
       security:
-      - cookieAuth: []
       - tokenAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
           description: ''
   /api/products/{id}/delete/:
     delete:
       operationId: products_delete_destroy
+      description: Mahsulotni o'chirib tashlash
+      summary: Mahsulotni o'chirib tashlash
       parameters:
       - in: path
         name: id
@@ -132,16 +150,23 @@ paths:
           type: integer
         required: true
       tags:
-      - products
+      - Moddiy boyliklarga oid endpointlar
       security:
-      - cookieAuth: []
       - tokenAuth: []
       responses:
-        '204':
-          description: No response body
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+          description: ''
   /api/products/{id}/update/:
     put:
       operationId: products_update_update
+      description: Mahsulotga o'zgartirish kiritish
+      summary: Mahsulotga o'zgartirish kiritish
       parameters:
       - in: path
         name: id
@@ -149,7 +174,7 @@ paths:
           type: integer
         required: true
       tags:
-      - products
+      - Moddiy boyliklarga oid endpointlar
       requestBody:
         content:
           application/json:
@@ -163,20 +188,23 @@ paths:
               $ref: '#/components/schemas/Product'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
           description: ''
   /api/products/create/:
     post:
       operationId: products_create_create
+      description: 'Mahsulot yaratish: bunda POST metodi ishlatiladi'
+      summary: Mahsulot yaratish
       tags:
-      - products
+      - Moddiy boyliklarga oid endpointlar
       requestBody:
         content:
           application/json:
@@ -190,23 +218,21 @@ paths:
               $ref: '#/components/schemas/Product'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
           description: ''
   /api/schema/:
     get:
       operationId: schema_retrieve
-      description: |-
-        OpenApi3 schema for this API. Format can be selected via content negotiation.
-
-        - YAML: application/vnd.oai.openapi
-        - JSON: application/vnd.oai.openapi+json
+      description: drf spectacular sxemasi
+      summary: drf spectacular sxemasi
       parameters:
       - in: query
         name: format
@@ -320,9 +346,8 @@ paths:
           - zh-hans
           - zh-hant
       tags:
-      - schema
+      - Endpoint sxemasi
       security:
-      - cookieAuth: []
       - tokenAuth: []
       - {}
       responses:
@@ -393,9 +418,13 @@ components:
         expiry_date:
           type: string
           format: date
+          nullable: true
         brand:
           type: string
           maxLength: 100
+        product_image:
+          type: string
+          format: uri
         category:
           type: integer
         warehouse:
@@ -409,7 +438,6 @@ components:
       - category
       - date_created
       - description
-      - expiry_date
       - id
       - inn_code
       - name
@@ -424,8 +452,8 @@ components:
       - user
       type: string
       description: |-
-        * `administrator` - Admin
-        * `user` - User
+        * `administrator` - administrator
+        * `user` - user
     User:
       type: object
       properties:
@@ -448,13 +476,8 @@ components:
           maxLength: 128
       required:
       - password
-      - role
       - username
   securitySchemes:
-    cookieAuth:
-      type: apiKey
-      in: cookie
-      name: sessionid
     tokenAuth:
       type: apiKey
       in: header

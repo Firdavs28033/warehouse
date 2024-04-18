@@ -1,11 +1,11 @@
-# multi_role_auth/urls.py
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.contrib.messages import api
 from django.urls import path, include
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
-    SpectacularSwaggerView,  # new
+    SpectacularSwaggerView,
 )
 
 urlpatterns = [
@@ -17,12 +17,15 @@ urlpatterns = [
         "api/schema/redoc/",
         SpectacularRedocView.as_view(url_name="schema"),
         name="redoc",
-    ),  # new
+    ),
     path(
         "api/schema/swagger-ui/",
         SpectacularSwaggerView.as_view(url_name="schema"),
         name="swagger-ui",
-    ),  # new
+    ),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -153,6 +153,9 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -169,8 +172,8 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'omborxona API',
-    'DESCRIPTION': 'omborxona - Django REST Framework',
+    'TITLE': 'IIV Akademiyasi moddiy boyliklarini hisobga olish uchun Backend qismi',
+    'DESCRIPTION': 'IIV Akademiyasi moddiy boyliklarini hisobga olish, nazorat qilish uchun Backend qismi',
     'VERSION': '1.0.0',
 }
 

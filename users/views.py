@@ -6,9 +6,14 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
+from drf_spectacular.utils import extend_schema
 
-
-
+@extend_schema(
+    responses={200: UserSerializer(many=True)},
+    summary="Foydalanuvchi registratsiya qilishi uchun endpoint",
+    description="Registratsiya qilish",
+    tags=["Avtorizatsiyaga oid endpointlar"],
+)
 class UserRegistrationView(APIView):
     serializer_class = UserSerializer
     def post(self, request):
@@ -19,7 +24,12 @@ class UserRegistrationView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
+@extend_schema(
+    responses={200: UserSerializer(many=True)},
+    summary="User login qilishi uchun endpoint",
+    description="Foydalanuvchi login qilishi uchun endpoint.",
+    tags=["Avtorizatsiyaga oid endpointlar"],
+    )
 class UserLoginView(ObtainAuthToken):
 
     def post(self, request, *args, **kwargs):
@@ -38,7 +48,12 @@ class UserLoginView(ObtainAuthToken):
             return Response({'message': 'Invalid username or password'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-
+@extend_schema(
+    responses={200: UserSerializer(many=True)},
+    summary="Tizimdan chiqish uchun endpoint",
+    description="Tizimdan chiqish uchun endpoint.",
+    tags=["Avtorizatsiyaga oid endpointlar"],
+)
 class UserLogoutView(APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = UserSerializer
