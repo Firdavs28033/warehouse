@@ -34,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 # DEBUG = True
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['web-production-e585.up.railway.app', 'localhost']
+ALLOWED_HOSTS = ['web-production-e585.up.railway.app', 'localhost', 'items.akadmvd.uz']
 
 
 # Application definition
@@ -76,6 +76,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
     'http://localhost:3000',
+    'http://items.akadvd.uz',
 )
 
 ROOT_URLCONF = 'omborxona.urls'
