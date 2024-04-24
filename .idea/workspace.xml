@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa8ee7c2-9def-4ead-8b7a-d07c36fa69d0" name="Changes" comment="deployment checklist" />
+    <list default="true" id="aa8ee7c2-9def-4ead-8b7a-d07c36fa69d0" name="Changes" comment="deployment checklist">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,7 +125,7 @@
       <workItem from="1713886233060" duration="1941000" />
       <workItem from="1713936364860" duration="4859000" />
       <workItem from="1713954424001" duration="3687000" />
-      <workItem from="1713973136190" duration="372000" />
+      <workItem from="1713973136190" duration="1259000" />
     </task>
     <task id="LOCAL-00001" summary="omborxona">
       <option name="closed" value="true" />
