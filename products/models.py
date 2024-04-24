@@ -41,7 +41,6 @@ class Product(models.Model):
         return self.name
 
 
-from django.db import models
 
 class QRCode(models.Model):
     url = models.TextField()

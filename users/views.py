@@ -1,4 +1,4 @@
-from users.serializers import UserSerializer
+from users.serializers import UserSerializer,UserProfileSerializer
 from django.contrib.auth import authenticate, login
 from rest_framework import status
 from rest_framework.response import Response
@@ -66,3 +66,21 @@ class UserLogoutView(APIView):
 
         return Response({'detail': 'Successfully logged out.'})
 
+
+@extend_schema(
+    responses={200: UserProfileSerializer(many=True)},
+    summary="Profile ma'lumotlari uchun endpoint",
+    description="Profile ma'lumotlari uchun endpoint.",
+    tags=["Profilega oid endpoint"],
+)
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserProfileSerializer
+    def get(self, request):
+        user = request.user
+        serializer = self.serializer_class(user)
+        data = {
+            'success':True,
+            'data': serializer.data,
+        }
+        return Response(data)

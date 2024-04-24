@@ -13,7 +13,10 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'role', 'bio', 'phone', 'profile_picture']
 
 
 
