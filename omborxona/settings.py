@@ -177,4 +177,4 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
 }
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://web-production-e585.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
