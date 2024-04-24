@@ -31,6 +31,7 @@ class ProductList(APIView):
         return Response(data)
 
 
+
 @extend_schema(
     responses={200: ProductSerializer(many=True)},
     summary="Id si ko'rsatilgan mahsulot",
@@ -44,7 +45,19 @@ class ProductDetail(RetrieveAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
+        category = instance.category
+        warehouse = instance.warehouse
+        user = instance.user
+        supplier = instance.supplier
+
+        category_json = str(category)
+        warehouse_json = str(warehouse)
+        user_json = str(user)
+        supplier_json = str(supplier)
+
         serializer = self.get_serializer(instance)
+        data = serializer.data
+
         request_url = request.build_absolute_uri()
         # Generate QR code
         qr = segno.make(request_url)
@@ -58,7 +71,11 @@ class ProductDetail(RetrieveAPIView):
 
         return Response({
             'success': True,
-            'data': serializer.data,
+            'data': data,
+            'category': category_json,
+            'user_json': user_json,
+            'supplier_json': supplier_json,
+            'warehouse_json': warehouse_json,
             'qr_code_url': qr_code_url,
         })
 
