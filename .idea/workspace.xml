@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa8ee7c2-9def-4ead-8b7a-d07c36fa69d0" name="Changes" comment="deployment checklist">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omborxona/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/omborxona/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +126,7 @@
       <workItem from="1713936364860" duration="4859000" />
       <workItem from="1713954424001" duration="3687000" />
       <workItem from="1713973136190" duration="3330000" />
+      <workItem from="1714015753635" duration="674000" />
     </task>
     <task id="LOCAL-00001" summary="omborxona">
       <option name="closed" value="true" />
