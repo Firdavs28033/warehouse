@@ -34,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 # DEBUG = True
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['web-production-e585.up.railway.app', 'localhost', 'items.akadmvd.uz']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -73,11 +73,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8000',
-    'http://localhost:3000',
-    'http://items.akadmvd.uz',
-)
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'omborxona.urls'
 
