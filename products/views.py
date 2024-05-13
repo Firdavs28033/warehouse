@@ -3,11 +3,10 @@ from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from products.models import Product, QRCode
+from products.models import Product
 from products.serializers import ProductSerializer
 from users.permissions import IsAdministrator
 from drf_spectacular.utils import extend_schema
-import segno
 
 
 @extend_schema(
@@ -23,6 +22,7 @@ class ProductList(APIView):
 
     def get(self, request, format=None):
         all_products = Product.objects.all()
+
         serializer = self.serializer_class(all_products, many=True)
         data = {
             'success': True,
@@ -45,38 +45,13 @@ class ProductDetail(RetrieveAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        category = instance.category
-        warehouse = instance.warehouse
-        user = instance.user
-        supplier = instance.supplier
-
-        category_json = str(category)
-        warehouse_json = str(warehouse)
-        user_json = str(user)
-        supplier_json = str(supplier)
 
         serializer = self.get_serializer(instance)
         data = serializer.data
 
-        request_url = request.build_absolute_uri()
-        # Generate QR code
-        qr = segno.make(request_url)
-        qr_svg_data = qr.svg_data_uri(scale=5)
-
-        # Save QR code URL in the database
-        qr_code = QRCode.objects.create(url=qr_svg_data)
-
-        # Get the URL of the saved QR code
-        qr_code_url = qr_code.url
-
         return Response({
             'success': True,
             'data': data,
-            'category': category_json,
-            'user_json': user_json,
-            'supplier_json': supplier_json,
-            'warehouse_json': warehouse_json,
-            'qr_code_url': qr_code_url,
         })
 
 
@@ -133,7 +108,7 @@ class ProductUpdate(APIView):
 class ProductDelete(APIView):
     permission_classes = [IsAuthenticated, IsAdministrator]
     serializer_class = ProductSerializer
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk):
         product = Product.objects.get(pk=pk)
         product.delete()
         data = {

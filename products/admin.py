@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, Warehouse, Supplier, QRCode
+from .models import Product, Category, Warehouse, Supplier
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -22,6 +22,3 @@ class SupplierAdmin(admin.ModelAdmin):
     list_display = ('name', 'contact_number',)
     search_fields = ('name', 'contact_number',)
 
-@admin.register(QRCode)
-class QRCodeAdmin(admin.ModelAdmin):
-    list_display = ('id',)

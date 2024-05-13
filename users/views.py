@@ -1,10 +1,11 @@
-from users.serializers import UserSerializer,UserProfileSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenObtainPairView
+
+from users.serializers import UserSerializer, UserProfileSerializer, MyTokenObtainPairSerializer
 from django.contrib.auth import authenticate, login
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from drf_spectacular.utils import extend_schema
 
@@ -30,22 +31,9 @@ class UserRegistrationView(APIView):
     description="Foydalanuvchi login qilishi uchun endpoint.",
     tags=["Avtorizatsiyaga oid endpointlar"],
     )
-class UserLoginView(ObtainAuthToken):
+class UserLoginView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
-    def post(self, request, *args, **kwargs):
-        username = request.data.get('username')
-        password = request.data.get('password')
-
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            token, created = Token.objects.get_or_create(user=user)
-            if created:
-                token.delete()  # Delete the token if it was already created
-                token = Token.objects.create(user=user)
-            return Response({'token': token.key, 'username': user.username, 'role': user.role})
-        else:
-            return Response({'message': 'Invalid username or password'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 @extend_schema(
@@ -59,13 +47,17 @@ class UserLogoutView(APIView):
     serializer_class = UserSerializer
 
     def post(self, request):
-        print(request.headers)
-        token_key = request.auth.key
-        token = Token.objects.get(key=token_key)
-        token.delete()
+        try:
+            refresh_token = request.data["refresh_token"]
+            token = RefreshToken(refresh_token)
+            token.blacklist()
 
-        return Response({'detail': 'Successfully logged out.'})
-
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        except Exception as e:
+            data = {
+                'message': str(e),
+            }
+            return Response(status=status.HTTP_400_BAD_REQUEST, data=data)
 
 @extend_schema(
     responses={200: UserProfileSerializer(many=True)},
